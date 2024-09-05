@@ -5,7 +5,7 @@ def bubbleSort(list):
     for index in range(len(list)-1, 0, -1): 
         for i in range(index):
             if list[i] > list[i+1]: 
-                temp = list[i] # swap them
+                temp = list[i] # swap the value
                 list[i] = list[i+1]
                 list[i+1] = temp
 
