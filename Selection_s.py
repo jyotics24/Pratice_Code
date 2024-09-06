@@ -9,7 +9,7 @@ def selection(arr):
                 minn=j
                 arr[i],arr[minn]=arr[minn],arr[i]
 arr=[21,41,33,42,31,17]
-print("Before Array :",arr)
+print("Before Array :jkl   ",arr)
 print()
 selection(arr)
 print("After sorted array using Selection sort :",arr)
