@@ -10,6 +10,7 @@ terraform {
 
 provider "azurerm" {
   features {}
+  subscription_id = "5c9c96f5-aa60-4477-8365-b72f2573f00f"
 }
 
 ####################
@@ -80,7 +81,7 @@ resource "azurerm_public_ip" "pubip" {
   name                = "jenkins-tf-pip"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
-  allocation_method   = "Static"   # Required for Standard SKU
+  allocation_method   = "Static"
   sku                 = "Standard"
 }
 
@@ -123,12 +124,11 @@ resource "azurerm_linux_virtual_machine" "vm" {
 
   source_image_reference {
     publisher = "Canonical"
-    offer     = "UbuntuServer"
-    sku       = "22.04-LTS"
+    offer     = "0001-com-ubuntu-server-jammy" # correct offer name for 22.04
+    sku       = "22_04-lts"
     version   = "latest"
   }
 
-  # Use SSH key instead of password
   admin_ssh_key {
     username   = "azureuser"
     public_key = file("~/.ssh/id_rsa.pub")
